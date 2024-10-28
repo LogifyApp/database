@@ -109,7 +109,7 @@ CREATE TABLE "User" (
     Id int  NOT NULL,
     Name varchar(40)  NOT NULL,
     Surname varchar(60)  NOT NULL,
-    PhoneNumber int  NOT NULL,
+    PhoneNumber varchar(15)  NOT NULL,
     Role varchar(15)  NOT NULL,
     PasswordHash varchar(255)  NOT NULL,
     CONSTRAINT User_pk PRIMARY KEY  (Id)
@@ -200,6 +200,3 @@ ALTER TABLE Employer ADD CONSTRAINT Owner_User
 ALTER TABLE Point ADD CONSTRAINT Point_Cargo
     FOREIGN KEY (Cargo_Id)
     REFERENCES Cargo (Id);
-
--- End of file.
-
