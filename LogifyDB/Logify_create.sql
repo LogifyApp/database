@@ -2,117 +2,116 @@
 -- Last modification date: 2024-07-12 11:52:48.039
 
 -- tables
--- Table: Attachment
 CREATE TABLE Attachment (
-    Id int  NOT NULL,
-    Message_id int  NOT NULL,
-    Document_Id int  NOT NULL,
-    CONSTRAINT Attachment_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Message_id INT NOT NULL,
+    Document_Id INT NOT NULL,
+    CONSTRAINT Attachment_pk PRIMARY KEY (Id)
 );
 
 -- Table: Car
 CREATE TABLE Car (
-    Number varchar(15)  NOT NULL,
-    Model varchar(50)  NULL,
-    Brand varchar(50)  NULL,
-    Status bit  NOT NULL,
-    IsDeleted bit  NOT NULL,
-    Employer_User_Id int  NOT NULL,
-    CONSTRAINT Car_pk PRIMARY KEY  (Number)
+    Number VARCHAR(15) NOT NULL,
+    Model VARCHAR(50) NULL,
+    Brand VARCHAR(50) NULL,
+    Status BIT NOT NULL,
+    IsDeleted BIT NOT NULL,
+    Employer_User_Id INT NOT NULL,
+    CONSTRAINT Car_pk PRIMARY KEY (Number)
 );
 
 -- Table: Cargo
 CREATE TABLE Cargo (
-    Id int  NOT NULL,
-    Status varchar(20)  NOT NULL,
-    Creation_Date datetime  NOT NULL,
-    Description varchar(1023)  NOT NULL,
-    Car_Id varchar(15)  NOT NULL,
-    Driver_User_Id int  NOT NULL,
-    Employer_User_Id int  NOT NULL,
-    CONSTRAINT Cargo_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Status VARCHAR(20) NOT NULL,
+    Creation_Date DATETIME NOT NULL,
+    Description VARCHAR(1023) NOT NULL,
+    Car_Id VARCHAR(15) NOT NULL,
+    Driver_User_Id INT NOT NULL,
+    Employer_User_Id INT NOT NULL,
+    CONSTRAINT Cargo_pk PRIMARY KEY (Id)
 );
 
 -- Table: Cargo_Document
 CREATE TABLE Cargo_Document (
-    Id int  NOT NULL,
-    Cargo_Id int  NOT NULL,
-    Document_Id int  NOT NULL,
-    CONSTRAINT Cargo_Document_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Cargo_Id INT NOT NULL,
+    Document_Id INT NOT NULL,
+    CONSTRAINT Cargo_Document_pk PRIMARY KEY (Id)
 );
 
 -- Table: Chat
 CREATE TABLE Chat (
-    Id int  NOT NULL,
-    Start_date datetime  NOT NULL,
-    Owner_User_Id int  NOT NULL,
-    Driver_User_Id int  NOT NULL,
-    CONSTRAINT Chat_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Start_date DATETIME NOT NULL,
+    Owner_User_Id INT NOT NULL,
+    Driver_User_Id INT NOT NULL,
+    CONSTRAINT Chat_pk PRIMARY KEY (Id)
 );
 
 -- Table: Document
 CREATE TABLE Document (
-    Id int  NOT NULL,
-    Filename varchar(255)  NOT NULL,
-    MongoId int  NOT NULL,
-    Filetype varchar(255)  NOT NULL,
-    FileURL varchar(255)  NOT NULL,
-    CONSTRAINT Document_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Filename VARCHAR(255) NOT NULL,
+    MongoId INT NOT NULL,
+    Filetype VARCHAR(255) NOT NULL,
+    FileURL VARCHAR(255) NOT NULL,
+    CONSTRAINT Document_pk PRIMARY KEY (Id)
 );
 
 -- Table: Driver
 CREATE TABLE Driver (
-    User_Id int  NOT NULL,
-    Status varchar(50)  NOT NULL,
-    CONSTRAINT Driver_pk PRIMARY KEY  (User_Id)
+    User_Id INT NOT NULL,
+    Status VARCHAR(50) NOT NULL,
+    CONSTRAINT Driver_pk PRIMARY KEY (User_Id)
 );
 
 -- Table: Employer
 CREATE TABLE Employer (
-    User_Id int  NOT NULL,
-    CONSTRAINT Employer_pk PRIMARY KEY  (User_Id)
+    User_Id INT NOT NULL,
+    CONSTRAINT Employer_pk PRIMARY KEY (User_Id)
 );
 
 -- Table: EmployerDriverHistory
 CREATE TABLE EmployerDriverHistory (
-    Id int  NOT NULL,
-    Employer_User_Id int  NOT NULL,
-    Driver_User_Id int  NOT NULL,
-    StartDate datetime  NOT NULL,
-    EndDate datetime  NULL,
-    CONSTRAINT EmployerDriverHistory_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Employer_User_Id INT NOT NULL,
+    Driver_User_Id INT NOT NULL,
+    StartDate DATETIME NOT NULL,
+    EndDate DATETIME NULL,
+    CONSTRAINT EmployerDriverHistory_pk PRIMARY KEY (Id)
 );
 
 -- Table: Message
 CREATE TABLE Message (
-    Id int  NOT NULL,
-    Content text  NOT NULL,
-    Date_time datetime  NOT NULL,
-    User_Id int  NOT NULL,
-    Chat_id int  NOT NULL,
-    CONSTRAINT Message_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Content TEXT NOT NULL,
+    Date_time DATETIME NOT NULL,
+    User_Id INT NOT NULL,
+    Chat_id INT NOT NULL,
+    CONSTRAINT Message_pk PRIMARY KEY (Id)
 );
 
 -- Table: Point
 CREATE TABLE Point (
-    Id int  NOT NULL,
-    Label varchar(255)  NOT NULL,
-    Latitude int  NOT NULL,
-    Longitude int  NOT NULL,
-    "Order" int  NOT NULL,
-    Cargo_Id int  NOT NULL,
-    CONSTRAINT Point_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Label VARCHAR(255) NOT NULL,
+    Latitude INT NOT NULL,
+    Longitude INT NOT NULL,
+    "Order" INT NOT NULL,
+    Cargo_Id INT NOT NULL,
+    CONSTRAINT Point_pk PRIMARY KEY (Id)
 );
 
 -- Table: User
 CREATE TABLE "User" (
-    Id int  NOT NULL,
-    Name varchar(40)  NOT NULL,
-    Surname varchar(60)  NOT NULL,
-    PhoneNumber varchar(15)  NOT NULL,
-    Role varchar(15)  NOT NULL,
-    PasswordHash varchar(255)  NOT NULL,
-    CONSTRAINT User_pk PRIMARY KEY  (Id)
+    Id INT IDENTITY(1,1) NOT NULL,
+    Name VARCHAR(40) NOT NULL,
+    Surname VARCHAR(60) NOT NULL,
+    PhoneNumber VARCHAR(15) NOT NULL,
+    Role VARCHAR(15) NOT NULL,
+    PasswordHash VARCHAR(255) NOT NULL,
+    CONSTRAINT User_pk PRIMARY KEY (Id)
 );
 
 -- foreign keys
