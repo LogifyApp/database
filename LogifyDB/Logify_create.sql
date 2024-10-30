@@ -44,7 +44,7 @@ CREATE TABLE Cargo_Document (
 CREATE TABLE Chat (
     Id INT IDENTITY(1,1) NOT NULL,
     Start_date DATETIME NOT NULL,
-    Owner_User_Id INT NOT NULL,
+    Employer_User_Id INT NOT NULL,
     Driver_User_Id INT NOT NULL,
     CONSTRAINT Chat_pk PRIMARY KEY (Id)
 );
@@ -53,11 +53,12 @@ CREATE TABLE Chat (
 CREATE TABLE Document (
     Id INT IDENTITY(1,1) NOT NULL,
     Filename VARCHAR(255) NOT NULL,
-    MongoId INT NOT NULL,
+    MongoId VARCHAR(255) NOT NULL,
     Filetype VARCHAR(255) NOT NULL,
     FileURL VARCHAR(255) NOT NULL,
     CONSTRAINT Document_pk PRIMARY KEY (Id)
 );
+
 
 -- Table: Driver
 CREATE TABLE Driver (
@@ -160,9 +161,9 @@ ALTER TABLE Chat ADD CONSTRAINT Chat_Driver
     FOREIGN KEY (Driver_User_Id)
     REFERENCES Driver (User_Id);
 
--- Reference: Chat_Owner (table: Chat)
-ALTER TABLE Chat ADD CONSTRAINT Chat_Owner
-    FOREIGN KEY (Owner_User_Id)
+-- Reference: Chat_Employer (table: Chat)
+ALTER TABLE Chat ADD CONSTRAINT Chat_Employer
+    FOREIGN KEY (Employer_User_Id)
     REFERENCES Employer (User_Id);
 
 -- Reference: Driver_User (table: Driver)
@@ -190,8 +191,8 @@ ALTER TABLE Message ADD CONSTRAINT Message_User
     FOREIGN KEY (User_Id)
     REFERENCES "User" (Id);
 
--- Reference: Owner_User (table: Employer)
-ALTER TABLE Employer ADD CONSTRAINT Owner_User
+-- Reference: Employer_User (table: Employer)
+ALTER TABLE Employer ADD CONSTRAINT Employer_User
     FOREIGN KEY (User_Id)
     REFERENCES "User" (Id);
 
